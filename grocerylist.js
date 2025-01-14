@@ -1,6 +1,6 @@
 let id = 0;
 
-// Added: Load grocery items from local storage when the page loads
+// Load grocery items from local storage when the page loads
 window.onload = () => {
     const groceryItems = JSON.parse(localStorage.getItem('groceryItems')) || [];
     groceryItems.forEach(item => {
@@ -9,40 +9,38 @@ window.onload = () => {
     });
 };
 
+// Add item button event listener
 document.getElementById(`Add`).addEventListener(`click`, () => {
-    let createDate = new Date();
-    let itemName = document.getElementById(`new-grocery-item`).value; // Modified
-    let itemBrand = document.getElementById(`item-brand`).value; // Modified
-    let itemQuantity = document.getElementById(`item-quantity`).value; // Modified
+    let itemName = document.getElementById(`new-grocery-item`).value;
+    let itemBrand = document.getElementById(`item-brand`).value;
+    let itemQuantity = document.getElementById(`item-quantity`).value;
 
     let item = {
         id: id,
-        name: itemName, // Modified
-        brand: itemBrand, // Modified
-        quantity: itemQuantity // Modified
+        name: itemName,
+        brand: itemBrand,
+        quantity: itemQuantity
     };
 
-    addItemToTable(item); // Modified
-    saveItemToLocalStorage(item); // Added
-    id++; // Increment id for next item
-    document.getElementById(`new-grocery-item`).value = ``;
-    document.getElementById(`item-brand`).value = ``;
-    document.getElementById(`item-quantity`).value = ``;
+    addItemToTable(item);
+    saveItemToLocalStorage(item);
+    id++; // Increment id for the next item
+    clearInputFields();
 });
 
-// Modified: Create a separate function to add an item to the table
+// Function to add an item to the table
 function addItemToTable(item) {
     let table = document.getElementById(`list`);
     let row = table.insertRow(table.rows.length);
     row.setAttribute(`id`, `item-${item.id}`);
-    row.insertCell(0).innerHTML = item.name; // Modified
-    row.insertCell(1).innerHTML = item.brand; // Modified
-    row.insertCell(2).innerHTML = item.quantity; // Modified
+    row.insertCell(0).innerHTML = item.name;
+    row.insertCell(1).innerHTML = item.brand;
+    row.insertCell(2).innerHTML = item.quantity;
     let actions = row.insertCell(3);
-    actions.appendChild(createDeleteButton(item.id)); // Modified
+    actions.appendChild(createDeleteButton(item.id));
 }
 
-// Added: Function to save the item to local storage
+// Function to save the item to local storage
 function saveItemToLocalStorage(item) {
     let groceryItems = JSON.parse(localStorage.getItem('groceryItems')) || [];
     groceryItems.push(item);
@@ -59,14 +57,21 @@ function createDeleteButton(id) {
         console.log(`Deleting row with id: item-${id}`);
         let elementToDelete = document.getElementById(`item-${id}`);
         elementToDelete.parentNode.removeChild(elementToDelete);
-        removeItemFromLocalStorage(id); // Added
+        removeItemFromLocalStorage(id);
     };
     return btn;
 }
 
-// Added: Function to remove item from local storage
+// Function to remove item from local storage
 function removeItemFromLocalStorage(id) {
     let groceryItems = JSON.parse(localStorage.getItem('groceryItems')) || [];
     groceryItems = groceryItems.filter(item => item.id !== id);
     localStorage.setItem('groceryItems', JSON.stringify(groceryItems));
+}
+
+// Helper function to clear input fields
+function clearInputFields() {
+    document.getElementById(`new-grocery-item`).value = ``;
+    document.getElementById(`item-brand`).value = ``;
+    document.getElementById(`item-quantity`).value = ``;
 }
