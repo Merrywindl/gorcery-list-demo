@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocery List</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <!-- Bootstrap CSS from CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.css">
     <style>
         .card {
             background-color: lightblue; /* Change this to your desired color */
@@ -19,24 +20,22 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
-                        <label for="Grocery Item">Grocery Item</label>
+                        <label for="new-grocery-item">Grocery Item</label>
                         <input type="text" class="form-control" id="new-grocery-item">                                          
-                                                                       
                     </div>
                 </div>
                 <div class="col-sm">
-                    <label for="Item Brand">Brand</label>
-                        <input type="text" class="form-control" id="item-brand">
+                    <label for="item-brand">Brand</label>
+                    <input type="text" class="form-control" id="item-brand">
                 </div>
                 <div class="col-sm">
-                    <label for="number-of-items-needed">Number to buy</label>
+                    <label for="item-quantity">Number to buy</label>
                     <input type="number" class="form-control" id="item-quantity">                    
                 </div>
                 <div class="col-sm">
                     <br>
                     <button id="Add" class="btn btn-primary">Add Item</button>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -53,8 +52,8 @@
             <!-- Rows will go here -->
         </tbody>
     </table>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.js"></script>
     <script src="grocerylist.js"></script>
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
 </html>
