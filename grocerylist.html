@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .card {
+            background-color: lightblue; /* Change this to your desired color */
+        }
+    </style>
+</head>
+<body class="container">
+    <br> <!-- Place <br> here if you need spacing at the top -->
+
+    <div class="card"> 
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="Grocery Item">Grocery Item</label>
+                        <input type="text" class="form-control" id="new-grocery-item">                                          
+                                                                       
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <label for="Item Brand">Brand</label>
+                        <input type="text" class="form-control" id="item-brand">
+                </div>
+                <div class="col-sm">
+                    <label for="number-of-items-needed">Number to buy</label>
+                    <input type="number" class="form-control" id="item-quantity">                    
+                </div>
+                <div class="col-sm">
+                    <br>
+                    <button id="Add" class="btn btn-primary">Add Item</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <table id="list" class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Brand</th>
+                <th>Quantity</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will go here -->
+        </tbody>
+    </table>
+    <script src="index.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
